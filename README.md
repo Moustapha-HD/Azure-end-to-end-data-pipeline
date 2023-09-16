@@ -102,8 +102,50 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 
 After execution of the entire pipeline, the data will be copied into the “Bronze” directory through the Lookup and ForEach activities, then into the “Silver” and finally “Gold” directories through the last two Notebook activities.
 
-The next phase will consist of creating an SQL database under Azure Synapse analytics.
+The next phase will consist of creating an SQL database in Azure Synapse analytics.
 
-PHASE VI: Azure Synapse Analytics
+## PHASE VI: Azure Synapse Analytics
 
 Azure Synapse Analytics is a limitless analytics service that brings together data integration, enterprise data warehousing and big data analytics.
+
+<img width="454" alt="9" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/30505445-ea5e-46ca-be5e-3e3fc1d105b0">
+
+### Get MetaData activity
+#### Dataset: 
+* Create a linked service to connect to Azure Data Lake Storage Gen2
+
+![11](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/8ad0044a-9af6-44dd-802c-15f4568a70a8)
+
+### For Each activity :
+<img width="395" alt="10" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/d3bce97e-28df-4b2b-9229-27df67aab9db">
+
+#### Items: 
+`@activity('get tablenames').output.childItems`
+
+### Creation of the database
+Create a serverless database: db_gold to store all tables
+![13](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/2d915a34-c63e-451a-ba0d-bb83f1a09f7c)
+
+#### Stored procedure in the ForEach activities
+
+Run the following script: “script2_sp_CreateSQLServerlessView_gold” to create a stored procedure
+
+<img width="454" alt="14" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/fbc4a895-bdfa-467a-9a74-77c4eee3685c">
+ 
+##### Linked service
+Linked service to the serverless db_gold
+##### Stored procedure name
+Select the one executed through the script "script2_sp_CreateSQLServerlessView_gold"
+
+Now, when you run the pipeline, all the data will be loaded into the SQL database in Views.
+<img width="186" alt="14" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/5b0abe3d-2bd0-4645-b90d-011b49d01450">
+
+Query the db_gold database in Azure Synapse.
+
+![15](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/03db578c-7de9-4719-a110-7fa8731fdd41)
+ 
+Perfect, everything works good!
+
+## References
+
+## Contact
