@@ -88,7 +88,7 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 2) Bronze_silver: To transfer data from the bronze layer to the silver layer and perform a simple transformation of the date format from “datetime” to “date”
 3) Silver_gold: To make transformations on the nomenclature of the column names of each table
 
-## PHASE IV: Load Data in Silver and Gold layer with ADF
+## Phase IV: Load Data in Silver and Gold layer with ADF
 ![7](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/3e4dc6a2-e7b0-4f3f-b838-b2f177362385)
 
 ## Notebook activity
@@ -98,13 +98,13 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 
 <img width="454" alt="8" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/2dee09f9-62db-4454-824f-94a783188c7b">
 
-* We will carry out the same manipulation for the last activity: silver_gold.
+* We will make the same manipulation for the last activity: silver_gold.
 
 After execution of the entire pipeline, the data will be copied into the “Bronze” directory through the Lookup and ForEach activities, then into the “Silver” and finally “Gold” directories through the last two Notebook activities.
 
 The next phase will consist of creating an SQL database in Azure Synapse analytics.
 
-## PHASE VI: Azure Synapse Analytics
+## Phase VI: Azure Synapse Analytics
 
 Azure Synapse Analytics is a limitless analytics service that brings together data integration, enterprise data warehousing and big data analytics.
 
@@ -144,7 +144,7 @@ Now, when you run the pipeline, all the data will be loaded into the SQL databas
 
 Query the db_gold database in Azure Synapse.
 
-![15](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/03db578c-7de9-4719-a110-7fa8731fdd41)
+![Capture d’écran 2023-09-16 à 23 54 51](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/4280521f-b6ed-4766-b23f-ce14ee5ead9e)
  
 Perfect, everything works good!
 
