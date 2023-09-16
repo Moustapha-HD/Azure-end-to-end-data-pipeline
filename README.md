@@ -108,7 +108,7 @@ The next phase will consist of creating an SQL database in Azure Synapse analyti
 
 Azure Synapse Analytics is a limitless analytics service that brings together data integration, enterprise data warehousing and big data analytics.
 
-<img width="454" alt="9" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/30505445-ea5e-46ca-be5e-3e3fc1d105b0">
+![Capture d’écran 2023-09-16 à 23 47 04](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/15cc86cf-ced6-4ced-a1f2-3fcebfc5c2c1)
 
 ### Get MetaData activity
 #### Dataset: 
@@ -124,13 +124,14 @@ Azure Synapse Analytics is a limitless analytics service that brings together da
 
 ### Creation of the database
 Create a serverless database: db_gold to store all tables
-![13](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/2d915a34-c63e-451a-ba0d-bb83f1a09f7c)
+
+![Capture d’écran 2023-09-16 à 23 41 57](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/42984129-ff4c-4588-b6d0-a5d22ae2966d)
 
 #### Stored procedure in the ForEach activities
 
 Run the following script: “script2_sp_CreateSQLServerlessView_gold” to create a stored procedure
 
-<img width="454" alt="14" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/fbc4a895-bdfa-467a-9a74-77c4eee3685c">
+![Capture d’écran 2023-09-16 à 23 48 54](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/5d52a0cd-6f64-4613-9b81-78ff7187d1bf)
  
 ##### Linked service
 Linked service to the serverless db_gold
@@ -138,7 +139,8 @@ Linked service to the serverless db_gold
 Select the one executed through the script "script2_sp_CreateSQLServerlessView_gold"
 
 Now, when you run the pipeline, all the data will be loaded into the SQL database in Views.
-<img width="186" alt="14" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/5b0abe3d-2bd0-4645-b90d-011b49d01450">
+
+![Capture d’écran 2023-09-16 à 23 43 50](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/737132d5-ed99-4bce-a65f-e14708369042)
 
 Query the db_gold database in Azure Synapse.
 
