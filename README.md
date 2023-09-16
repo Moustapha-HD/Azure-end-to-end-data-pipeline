@@ -36,10 +36,7 @@ For this project, you will need:
 2) Azure Databricks
 
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
-
-[!NOTE]
-Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
+> Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
 
 <a name="step1"></a>
 ## Step I : On-Premise - SQL Server Management Studio
