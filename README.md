@@ -1,7 +1,18 @@
 # Azure end-to-end-data Pipeline
 
-## Table of contents
+### Table of contents
 
+* [Overview](#Overview)
+* [Architecture](#Architecture)
+* [Prerequisites](#Prerequisites)
+* [Step I : On-Premise - SQL Server Management Studio](#step1)
+* [Step II: Data ingestion on Azure Data Factory](#step2)
+* [Prerequisites](#Prerequisites)
+* [Prerequisites](#Prerequisites)
+* [Prerequisites](#Prerequisites)
+
+
+<a name="Overview"></a>
 ## Overview
 Implementation of an end-to-end pipeline to migrate an On-Premise database to Azure cloud. We will use these following services :
 * Azure Data Factory to ingest the On-Prem SQL server database and create the end-to-end Pipeline.
@@ -11,24 +22,27 @@ Implementation of an end-to-end pipeline to migrate an On-Premise database to Az
 *	Azure Active Directory to secure access to resources
 *	Azure Key Vault to store and access secrets securely
 
+<a name="Architecture"></a>
 ## Architecture
 <img width="1151" alt="Capture d’écran 2023-09-16 à 18 12 08" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/149c9d12-758f-4028-a9d7-a447605829a5">
 
+<a name="Prerequisites"></a>
 ## Prerequisites
 For this project, you will need:
 1) Azure account
 2) Azure Databricks
 3) Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
 
-## Phase I: On-Premise - SQL Server Management Studio (SSMS)
+<a name="step1"></a>
+## Step I: On-Premise - SQL Server Management Studio
 
 * AdventureWorks2022 database available [Here](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak)
 * We will only use the HumanRessources tables. To do this, use the “script1_lookup_all_tables” script available in the repo.
 
 ![Sans titre](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/9119fa80-be0c-4058-92fc-15e315618da5)
 
-
-## Phase II: Data ingestion on Azure Data Factory
+<a name="step1"></a>
+## Step II: Data ingestion on Azure Data Factory
 ADF provides a cloud-based ETL solution that orchestrates data movement by scheduling data pipelines and transforming data at scale between various data stores and compute resources.
 
 ![1](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/68334873-09f4-4459-a6d4-dfcdcd95bea9)
@@ -79,7 +93,8 @@ The same Integration Runtime as before.
 After running the pipeline, all the tables will be copied to the “bronze” directory with the following nomenclature:
 <img width="436" alt="5" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/90fd4872-a616-4865-a0f2-fab92795e2e3">
 
-## Phase III: Databriks
+<a name="step3"></a>
+## Step III: Databriks
 
 Azure Databricks provides the latest versions of Apache Spark and allows you to seamlessly integrate with open source libraries. Spin up clusters and build quickly in a fully managed Apache Spark environment with the global scale and availability of Azure.
 
@@ -88,7 +103,8 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 2) Bronze_silver: To transfer data from the bronze layer to the silver layer and perform a simple transformation of the date format from “datetime” to “date”
 3) Silver_gold: To make transformations on the nomenclature of the column names of each table
 
-## Phase IV: Load Data in Silver and Gold layer with ADF
+<a name="step4"></a>
+## Step IV: Load Data in Silver and Gold layer with ADF
 ![7](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/3e4dc6a2-e7b0-4f3f-b838-b2f177362385)
 
 ## Notebook activity
@@ -104,7 +120,8 @@ After execution of the entire pipeline, the data will be copied into the “Bron
 
 The next phase will consist of creating an SQL database in Azure Synapse analytics.
 
-## Phase VI: Azure Synapse Analytics
+<a name="step5"></a>
+## Step V: Azure Synapse Analytics
 
 Azure Synapse Analytics is a limitless analytics service that brings together data integration, enterprise data warehousing and big data analytics.
 
@@ -146,8 +163,10 @@ Query the db_gold database in Azure Synapse.
 
 ![Capture d’écran 2023-09-16 à 23 54 51](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/4280521f-b6ed-4766-b23f-ce14ee5ead9e)
  
-Perfect, everything works good!
+Perfect, everything works good :+1:
 
+<a name="references"></a>
 ## References
 
+<a name="contact"></a>
 ## Contact
