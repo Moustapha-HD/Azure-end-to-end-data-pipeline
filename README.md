@@ -177,4 +177,4 @@ Perfect, everything works good :+1:
 
 <a name="contact"></a>
 ## Contact
-*[Linkedin](https://www.linkedin.com/in/moustapha-hama-djibo-42b40a28/)
+* [Linkedin](https://www.linkedin.com/in/moustapha-hama-djibo-42b40a28/)
