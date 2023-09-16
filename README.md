@@ -83,9 +83,27 @@ After running the pipeline, all the tables will be copied to the “bronze” di
 
 Azure Databricks provides the latest versions of Apache Spark and allows you to seamlessly integrate with open source libraries. Spin up clusters and build quickly in a fully managed Apache Spark environment with the global scale and availability of Azure.
 
-For this part, we will use the three Notebooks available in the repo. The treatments carried out in each Notebook:
+In this part, we will use the three Notebooks available in the repo. The treatments carried out in each Notebook:
 1) Storage_mount: To mount the three containers available in the storage account: “bronze”, “silver” and “gold”
 2) Bronze_silver: To transfer data from the bronze layer to the silver layer and perform a simple transformation of the date format from “datetime” to “date”
 3) Silver_gold: To make transformations on the nomenclature of the column names of each table
 
-PHASE IV: Load Data in Silver and Gold layer with ADF
+## PHASE IV: Load Data in Silver and Gold layer with ADF
+![7](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/3e4dc6a2-e7b0-4f3f-b838-b2f177362385)
+
+## Notebook activity
+### Databricks linked service
+* Since this is a service within Azure, create a linked service of type AutoResolveIntegrationRuntime
+* Settings: Notebook path in Databricks.
+
+<img width="454" alt="8" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/2dee09f9-62db-4454-824f-94a783188c7b">
+
+* We will carry out the same manipulation for the last activity: silver_gold.
+
+After execution of the entire pipeline, the data will be copied into the “Bronze” directory through the Lookup and ForEach activities, then into the “Silver” and finally “Gold” directories through the last two Notebook activities.
+
+The next phase will consist of creating an SQL database under Azure Synapse analytics.
+
+PHASE VI: Azure Synapse Analytics
+
+Azure Synapse Analytics is a limitless analytics service that brings together data integration, enterprise data warehousing and big data analytics.
