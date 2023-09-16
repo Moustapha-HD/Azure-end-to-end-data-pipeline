@@ -172,6 +172,9 @@ Perfect, everything works good :+1:
 
 <a name="references"></a>
 ## References
+* [Mr. K Talks Tech](https://www.youtube.com/@mr.ktalkstech)
+* [Azure Documentation](https://learn.microsoft.com/fr-fr/azure/?product=popular)
 
 <a name="contact"></a>
 ## Contact
+*[Linkedin](https://www.linkedin.com/in/moustapha-hama-djibo-42b40a28/)
