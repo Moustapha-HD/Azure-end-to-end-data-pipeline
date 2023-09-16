@@ -7,9 +7,12 @@
 * [Prerequisites](#Prerequisites)
 * [Step I : On-Premise - SQL Server Management Studio](#step1)
 * [Step II: Data ingestion on Azure Data Factory](#step2)
-* [Prerequisites](#Prerequisites)
-* [Prerequisites](#Prerequisites)
-* [Prerequisites](#Prerequisites)
+* [Step III : Databriks](#step3)
+* [Step IV : Load Data in Silver and Gold layer](#step4)
+* [Step V: Azure Synapse Analytics](#step5)
+* [References](#References)
+* [Contact](#Contact)
+
 
 
 <a name="Overview"></a>
@@ -34,15 +37,15 @@ For this project, you will need:
 3) Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
 
 <a name="step1"></a>
-## Step I: On-Premise - SQL Server Management Studio
+## Step I : On-Premise - SQL Server Management Studio
 
 * AdventureWorks2022 database available [Here](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak)
 * We will only use the HumanRessources tables. To do this, use the “script1_lookup_all_tables” script available in the repo.
 
 ![Sans titre](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/9119fa80-be0c-4058-92fc-15e315618da5)
 
-<a name="step1"></a>
-## Step II: Data ingestion on Azure Data Factory
+<a name="step2"></a>
+## Step II : Data ingestion on Azure Data Factory
 ADF provides a cloud-based ETL solution that orchestrates data movement by scheduling data pipelines and transforming data at scale between various data stores and compute resources.
 
 ![1](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/68334873-09f4-4459-a6d4-dfcdcd95bea9)
@@ -94,7 +97,7 @@ After running the pipeline, all the tables will be copied to the “bronze” di
 <img width="436" alt="5" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/90fd4872-a616-4865-a0f2-fab92795e2e3">
 
 <a name="step3"></a>
-## Step III: Databriks
+## Step III : Databriks
 
 Azure Databricks provides the latest versions of Apache Spark and allows you to seamlessly integrate with open source libraries. Spin up clusters and build quickly in a fully managed Apache Spark environment with the global scale and availability of Azure.
 
@@ -104,11 +107,11 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 3) Silver_gold: To make transformations on the nomenclature of the column names of each table
 
 <a name="step4"></a>
-## Step IV: Load Data in Silver and Gold layer with ADF
+## Step IV : Load Data in Silver and Gold layer
 ![7](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/3e4dc6a2-e7b0-4f3f-b838-b2f177362385)
 
-## Notebook activity
-### Databricks linked service
+### Notebook activity
+#### Databricks linked service
 * Since this is a service within Azure, create a linked service of type AutoResolveIntegrationRuntime
 * Settings: Notebook path in Databricks.
 
