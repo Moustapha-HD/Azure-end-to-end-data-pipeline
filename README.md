@@ -34,7 +34,12 @@ Implementation of an end-to-end pipeline to migrate an On-Premise database to Az
 For this project, you will need:
 1) Azure account
 2) Azure Databricks
-3) Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
+
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
+
+[!NOTE]
+Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
 
 <a name="step1"></a>
 ## Step I : On-Premise - SQL Server Management Studio
