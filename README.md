@@ -27,7 +27,7 @@ Implementation of an end-to-end pipeline to migrate an On-Premise database to Az
 
 <a name="Architecture"></a>
 ## Architecture
-<img width="1151" alt="Capture d’écran 2023-09-16 à 18 12 08" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/149c9d12-758f-4028-a9d7-a447605829a5">
+![etl_ok](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/d42c8a00-5dab-4756-b1f9-bcabf75fa48b)
 
 <a name="Prerequisites"></a>
 ## Prerequisites
