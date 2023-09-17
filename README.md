@@ -1,14 +1,14 @@
-# Azure end-to-end-data Pipeline
+# Azure end-to-end data Pipeline
 
 ### Table of contents
 
 * [Overview](#Overview)
 * [Architecture](#Architecture)
 * [Prerequisites](#Prerequisites)
-* [Step I : On-Premise - SQL Server Management Studio](#step1)
+* [Step I : On-Premise on SQL Server Management Studio](#step1)
 * [Step II: Data ingestion on Azure Data Factory](#step2)
 * [Step III : Databriks](#step3)
-* [Step IV : Load Data in Silver and Gold layer](#step4)
+* [Step IV : Loading Data in Silver and Gold layer](#step4)
 * [Step V: Azure Synapse Analytics](#step5)
 * [References](#References)
 * [Contact](#Contact)
@@ -17,8 +17,8 @@
 
 <a name="Overview"></a>
 ## Overview
-Implementation of an end-to-end pipeline to migrate an On-Premise database to Azure cloud. We will use these following services :
-* Azure Data Factory to ingest the On-Prem SQL server database and create the end-to-end Pipeline.
+Implementation of an end-to-end pipeline to migrate an On-Premise database to Azure cloud using these following services :
+*  Azure Data Factory to ingest the On-Prem SQL server database and create the end-to-end Pipeline.
 *	Azure Data Lake Gen2 to store SQL database tables
 *	Azure Databricks to transform data
 *	Azure Synapse Analytics to load data into a database
@@ -32,17 +32,17 @@ Implementation of an end-to-end pipeline to migrate an On-Premise database to Az
 <a name="Prerequisites"></a>
 ## Prerequisites
 For this project, you will need:
-1) Azure account
-2) Azure Databricks
+1) [Azure account](https://azure.microsoft.com/en-us/free/search/?&ef_id=_k_Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB_k_&OCID=AIDcmm0g9y8ggq_SEM__k_Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB_k_&gad=1&gclid=Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB)
+2) [Azure Databricksaccount](https://azure.microsoft.com/fr-fr/free/databricks/search/?ef_id=_k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&OCID=AIDcmm0g9y8ggq_SEM__k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&gad=1&gclid=Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB)
 
 > [!NOTE]
 > Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
 
 <a name="step1"></a>
-## Step I : On-Premise - SQL Server Management Studio
+## Step I : On-Premise on SQL Server Management Studio
 
 * AdventureWorks2022 database available [Here](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2022.bak)
-* We will only use the HumanRessources tables. To do this, use the “script1_lookup_all_tables” script available in the repo.
+* We will only use the `HumanRessources` tables. The script “script1_lookup_all_tables” is available in the repo.
 
 ![Sans titre](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/9119fa80-be0c-4058-92fc-15e315618da5)
 
@@ -66,7 +66,7 @@ Microsoft documentation on the Lookup activity available [Here](https://learn.mi
 Microsoft documentation on the ForEach activity available [Here](https://learn.microsoft.com/fr-fr/azure/data-factory/control-flow-for-each-activity)
 
 #### Items: 
-`@activity('Lookup all tables').output.value` : Allows you to retrieve the output of the lookup: The name of the schema (SchemaName) and the names of each table (TableName)
+`@activity('Lookup all tables').output.value` : Allows to retrieve the output of the lookup: The schema name (SchemaName) and names of each table (TableName)
 
 ### Activities in ForEach:
 ![3](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/f0c438e7-25f7-4498-8faf-39d6a5407f05)
@@ -75,7 +75,7 @@ Microsoft documentation on the ForEach activity available [Here](https://learn.m
 The same Integration Runtime as before.
 
 #### Query
-`@{concat('SELECT * FROM ', item().SchemaName, '.', item().TableName)}`: Allows you to query all tables as input to the forEach. Example: `SELECT * FROM HumanResources.Shift`
+`@{concat('SELECT * FROM ', item().SchemaName, '.', item().TableName)}`: Allows to query all tables as input to the forEach. Example: `SELECT * FROM HumanResources.Shift`
 
 #### Sink
 <img width="454" alt="4" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/f467eb40-1862-4c6f-ad19-a066fbba6f10">
@@ -84,7 +84,7 @@ The same Integration Runtime as before.
 * New => Connection
 * Linked service: Linked service to connect to Azure Data Lake Storage Gen2
 * File path:
-    * First field: bronze #container to create in your storage account
+    * First field: `bronze` #Create the container in your storage account
     * Second field: `@{concat(dataset().schemaname, '/', dataset().tablename)}`
     * Third field: `@{concat(dataset().tablename,'.parquet')}`
 
@@ -92,10 +92,17 @@ The same Integration Runtime as before.
 <img width="454" alt="5" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/e8c2beb2-0463-4f39-8fdb-146f7ece69a9">
 
 #### Dataset properties:
-* schemaname: @item().SchemaName
-* tablename: @item().TableName
+* schemaname: `@item().SchemaName`
+* tablename: `@item().TableName`
 
-After running the pipeline, all the tables will be copied to the “bronze” directory with the following nomenclature:
+After running the pipeline, all tables will be copied to the “bronze” directory with the following nomenclature:
+
+```bash
+|-- bronze
+   |-- HumanResources
+      |-- Department
+         |-- Department.parquet
+```
 <img width="436" alt="5" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/90fd4872-a616-4865-a0f2-fab92795e2e3">
 
 <a name="step3"></a>
@@ -103,7 +110,7 @@ After running the pipeline, all the tables will be copied to the “bronze” di
 
 Azure Databricks provides the latest versions of Apache Spark and allows you to seamlessly integrate with open source libraries. Spin up clusters and build quickly in a fully managed Apache Spark environment with the global scale and availability of Azure.
 
-In this part, we will use the three Notebooks available in the repo. The treatments carried out in each Notebook:
+In this part, we will use the three Notebooks available in the repo. Here is treatment in each Notebook:
 1) Storage_mount: To mount the three containers available in the storage account: “bronze”, “silver” and “gold”
 2) Bronze_silver: To transfer data from the bronze layer to the silver layer and perform a simple transformation of the date format from “datetime” to “date”
 3) Silver_gold: To make transformations on the nomenclature of the column names of each table
@@ -114,16 +121,16 @@ In this part, we will use the three Notebooks available in the repo. The treatme
 
 ### Notebook activity
 #### Databricks linked service
-* Since this is a service within Azure, create a linked service of type AutoResolveIntegrationRuntime
+* AutoResolveIntegrationRuntime since this is an Azure service
 * Settings: Notebook path in Databricks.
 
 <img width="454" alt="8" src="https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/2dee09f9-62db-4454-824f-94a783188c7b">
 
-* We will make the same manipulation for the last activity: silver_gold.
+* Same manipulation for the last activity: silver_gold.
 
-After execution of the entire pipeline, the data will be copied into the “Bronze” directory through the Lookup and ForEach activities, then into the “Silver” and finally “Gold” directories through the last two Notebook activities.
+After execution of the entire pipeline, data will be copied into the “Bronze” directory through the Lookup and ForEach activities, then into the “Silver” and finally “Gold” directories through the last two Notebook activities.
 
-The next phase will consist of creating an SQL database in Azure Synapse analytics.
+The next phase will consist of creating Serverless SQL database in Azure Synapse analytics.
 
 <a name="step5"></a>
 ## Step V: Azure Synapse Analytics
@@ -144,12 +151,12 @@ Azure Synapse Analytics is a limitless analytics service that brings together da
 #### Items: 
 `@activity('get tablenames').output.childItems`
 
-### Creation of the database
+### Database creation
 Create a serverless database: db_gold to store all tables
 
 ![Capture d’écran 2023-09-16 à 23 41 57](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/42984129-ff4c-4588-b6d0-a5d22ae2966d)
 
-#### Stored procedure in the ForEach activities
+#### Stored procedure in ForEach activities
 
 Run the following script: “script2_sp_CreateSQLServerlessView_gold” to create a stored procedure
 
@@ -160,7 +167,7 @@ Linked service to the serverless db_gold
 ##### Stored procedure name
 Select the one executed through the script "script2_sp_CreateSQLServerlessView_gold"
 
-Now, when you run the pipeline, all the data will be loaded into the SQL database in Views.
+Now, when we run the pipeline, all the data will be loaded into the SQL database in a Views.
 
 ![Capture d’écran 2023-09-16 à 23 43 50](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/737132d5-ed99-4bce-a65f-e14708369042)
 
@@ -168,7 +175,7 @@ Query the db_gold database in Azure Synapse.
 
 ![Capture d’écran 2023-09-16 à 23 54 51](https://github.com/Moustapha-HD/Azure-end-to-end-data-pipeline/assets/118195267/4280521f-b6ed-4766-b23f-ce14ee5ead9e)
  
-Perfect, everything works good :+1:
+Perfect, everything works fine :+1:
 
 <a name="references"></a>
 ## References
