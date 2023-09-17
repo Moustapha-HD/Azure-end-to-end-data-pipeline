@@ -33,7 +33,7 @@ Implementation of an end-to-end pipeline to migrate an On-Premise database to Az
 ## Prerequisites
 For this project, you will need:
 1) [Azure account](https://azure.microsoft.com/en-us/free/search/?&ef_id=_k_Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB_k_&OCID=AIDcmm0g9y8ggq_SEM__k_Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB_k_&gad=1&gclid=Cj0KCQjwx5qoBhDyARIsAPbMagC4FKYpfpTFo2mREtzppyB7zUKGhIdCYUH9CKGo9SMCZwwfyhRcuEoaAjUyEALw_wcB)
-2) [Azure Databricksaccount](https://azure.microsoft.com/fr-fr/free/databricks/search/?ef_id=_k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&OCID=AIDcmm0g9y8ggq_SEM__k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&gad=1&gclid=Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB)
+2) [Azure Databricks account](https://azure.microsoft.com/fr-fr/free/databricks/search/?ef_id=_k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&OCID=AIDcmm0g9y8ggq_SEM__k_Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB_k_&gad=1&gclid=Cj0KCQjwx5qoBhDyARIsAPbMagBiVpxS9PlaHi0Byp69HLQ79acVRqBweCW58OcUTANnyfiY7Jhs2oMaAmXNEALw_wcB)
 
 > [!NOTE]
 > Minimal knowledge of Azure and Databricks, such as basic configuration of the different services.
